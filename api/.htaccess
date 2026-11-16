@@ -1,0 +1,3 @@
+<FilesMatch "^(http|sesion)\.php$">
+    Require all denied
+</FilesMatch>
