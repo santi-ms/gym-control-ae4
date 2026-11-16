@@ -109,7 +109,12 @@ function normalizar(texto) {
 }
 
 function pintarTarjetas() {
-  const filtrados = planes;
+  const busqueda = normalizar($('buscar-plan').value);
+  const meses = $('filtrar-duracion').value;
+  const filtrados = planes.filter((plan) =>
+    (!meses || plan.duracion_meses === Number(meses))
+    && normalizar([plan.nombre, plan.categoria, plan.descripcion].join(' ')).includes(busqueda)
+  );
   const tarjetas = filtrados.map((plan) => {
     const tarjeta = elemento('article', undefined, 'plan-card');
     tarjeta.append(
@@ -177,7 +182,7 @@ function actualizarTotal() {
     return;
   }
   const subtotal = plan.precio * cantidad;
-  const descuento = 0;
+  const descuento = leerCupon() === 'UCP10' ? Math.floor(subtotal / 10) : 0;
   $('estado-total').textContent = 'Subtotal ' + moneda.format(subtotal) + ' · Descuento ' + moneda.format(descuento) + ' · Total ' + moneda.format(subtotal - descuento);
 }
 
