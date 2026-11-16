@@ -4,9 +4,10 @@
 
 Gym Control permite consultar y comparar planes de gimnasio, elegir una membresía y consultar su vigencia. El administrador gestiona el catálogo. La aplicación reúne la portada, la tabla, las tarjetas, el detalle y el formulario de la AE1 en una SPA con JavaScript Vanilla. PHP controla las operaciones y PDO conecta con la base MySQL mediante el controlador `pdo_mysql`.
 
-- [Análisis y diseño de la AE1](docs/Gym_Control_AE1_Analisis_y_Diseno.pdf)
+- [Índice de documentación y antecedentes](docs/README.md)
+- [Análisis y diseño de la AE1](docs/antecedentes/ae1/Gym_Control_AE1_Analisis_y_Diseno.pdf)
 - [Informe técnico final de la AE4](docs/Gym_Control_AE4_Informe_Tecnico.pdf)
-- [Aportes registrados y tareas del equipo](docs/Aportes_AE4.md)
+- [Aportes realizados por el equipo](docs/Aportes_AE4.md)
 - [Evidencias de Lighthouse y pruebas](docs/evidencias/README.md)
 
 ## Estructura
@@ -21,8 +22,8 @@ gym-control-ae4/
 ├── models/                  Acceso a datos mediante PDO
 ├── config/                  Conexión PDO y configuración local
 ├── database/                Esquema SQL y catálogo inicial
-├── scripts/                 Alta de cuentas de demostración o administrador por CLI
-└── docs/                    Antecedentes, informe y evidencias
+├── scripts/                 Alta de cuentas y pruebas automatizadas del contador
+└── docs/                    Informe AE4, evidencias, antecedentes e informes individuales
 ```
 
 Flujo MVC desacoplado: **vista HTML/CSS + JavaScript → fetch HTTP/JSON → controladores PHP → modelos PDO → MySQL**. La vista permanece en un documento HTML y cambia de sección mediante rutas con fragmentos. El navegador comparte origen con la API.
@@ -48,7 +49,7 @@ Flujo MVC desacoplado: **vista HTML/CSS + JavaScript → fetch HTTP/JSON → con
 | Antecedente | Recorrido en AE4 | Datos |
 | --- | --- | --- |
 | CU01 · Consultar planes | Portada → Ver planes | `planes` |
-| CU02 · Visualizar listado | Tabla y tarjetas con búsqueda | `planes` |
+| CU02 · Visualizar listado | Tabla y tarjetas; búsqueda en tarjetas | `planes` |
 | CU03 · Consultar detalle | Ficha dinámica del plan elegido | `planes` |
 | CU04 · Seleccionar un plan | Ingreso, selección, confirmación e historial | `usuarios`, `planes`, `membresias` |
 | RF05 · Gestión de planes | Alta, consulta, edición y baja con rol administrador | `planes` |
@@ -77,9 +78,13 @@ Base local `http://localhost/gym-control-ae4/api/`. Éxito como objeto JSON, err
 
 ## Auditoría y demostración
 
+Las evidencias de accesibilidad y los registros generales de pruebas corresponden a la línea base documentada el 15/11/2026, anterior a los aportes de sesión y contador del 16/11. No representan una nueva auditoría de la versión final. El [índice de evidencias](docs/evidencias/README.md) distingue los entornos, fechas y alcances de cada comprobación.
+
 1. En Chrome, abrí la SPA y usá **Tab** para recorrer enlaces, controles y botones. Activá los controles con **Enter**. Escribí los datos de formulario cuando el campo tenga foco.
 2. Abrí DevTools con `F12`, seleccioná **Lighthouse**, elegí **Accessibility** y ejecutá **Analyze page load**. Auditá también la vista de selección con una sesión de socio activa y el panel de administrador. Si corre en un perfil con extensiones, usá un perfil limpio.
 3. En **Network → Fetch/XHR**, confirmá una membresía y revisá `POST membresias.php`, el HTTP 201 y el JSON. Volvé a **Mi cuenta** para comprobar el historial. Después de cerrar sesión, ingresar directo a `/gym-control-ae4/api/membresias.php` devuelve 401 con JSON.
 4. Para respaldar el código, usá el ZIP de entrega. Para respaldar datos de una instalación que ya se utilizó, exportá la base por separado desde phpMyAdmin.
 
-Esta copia se importa por etapas desde [el repositorio original de Gym Control AE4](https://github.com/santiagotarnoski/gym-control-ae4). La documentación anterior y las contribuciones originales permanecen disponibles en el historial de ese repositorio. Los commits de esta copia registran la importación por componentes.
+Para ejecutar las pruebas del contador con Node.js: `node scripts/pruebas-consultas.cjs`. Simulan los controles y las respuestas HTTP; no requieren XAMPP ni comprueban la persistencia real.
+
+El repositorio de entrega es [santi-ms/gym-control-ae4](https://github.com/santi-ms/gym-control-ae4). El proyecto parte del [trabajo grupal original](https://github.com/santiagotarnoski/gym-control-ae4); esta copia registra su importación por componentes y los aportes posteriores. Los documentos AE1 y AE2 se conservan como antecedentes, con sus rutas y resultados históricos.
