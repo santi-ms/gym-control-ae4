@@ -1,0 +1,232 @@
+[
+  {
+    "prueba": "Catálogo público con planes originales",
+    "estado": 200,
+    "ms": 95,
+    "bytes": 672
+  },
+  {
+    "prueba": "Detalle disponible",
+    "estado": 200,
+    "ms": 22,
+    "bytes": 169
+  },
+  {
+    "prueba": "Detalle inexistente",
+    "estado": 404,
+    "ms": 13,
+    "bytes": 44
+  },
+  {
+    "prueba": "Entrada SQL inválida en ID",
+    "estado": 400,
+    "ms": 15,
+    "bytes": 49
+  },
+  {
+    "prueba": "Método no permitido",
+    "estado": 405,
+    "ms": 11,
+    "bytes": 33
+  },
+  {
+    "prueba": "Membresías anónimas",
+    "estado": 401,
+    "ms": 13,
+    "bytes": 36
+  },
+  {
+    "prueba": "Alta de plan anónima",
+    "estado": 401,
+    "ms": 11,
+    "bytes": 36
+  },
+  {
+    "prueba": "Sesión anónima",
+    "estado": 401,
+    "ms": 12,
+    "bytes": 36
+  },
+  {
+    "prueba": "JSON malformado",
+    "estado": 400,
+    "ms": 16,
+    "bytes": 33
+  },
+  {
+    "prueba": "Login con intento de inyección SQL",
+    "estado": 401,
+    "ms": 249,
+    "bytes": 39
+  },
+  {
+    "prueba": "Registro de socio con BCRYPT",
+    "estado": 201,
+    "ms": 237,
+    "bytes": 95
+  },
+  {
+    "prueba": "E-mail duplicado",
+    "estado": 409,
+    "ms": 263,
+    "bytes": 48
+  },
+  {
+    "prueba": "Ingreso con cookie HttpOnly y SameSite",
+    "estado": 200,
+    "ms": 251,
+    "bytes": 169
+  },
+  {
+    "prueba": "ID de sesión anterior inválido",
+    "estado": 401,
+    "ms": 7,
+    "bytes": 36
+  },
+  {
+    "prueba": "Socio sin permisos de administración",
+    "estado": 403,
+    "ms": 7,
+    "bytes": 61
+  },
+  {
+    "prueba": "Mutación sin token CSRF",
+    "estado": 403,
+    "ms": 6,
+    "bytes": 79
+  },
+  {
+    "prueba": "Cantidad fuera de rango",
+    "estado": 400,
+    "ms": 8,
+    "bytes": 47
+  },
+  {
+    "prueba": "Cupón inválido",
+    "estado": 400,
+    "ms": 13,
+    "bytes": 49
+  },
+  {
+    "prueba": "Alta de membresía y cálculo autoritativo del total",
+    "estado": 201,
+    "ms": 13,
+    "bytes": 196
+  },
+  {
+    "prueba": "Reintento idempotente",
+    "estado": 200,
+    "ms": 13,
+    "bytes": 196
+  },
+  {
+    "prueba": "Renovación consecutiva",
+    "estado": 201,
+    "ms": 14,
+    "bytes": 196
+  },
+  {
+    "prueba": "Historial del socio autenticado",
+    "estado": 200,
+    "ms": 23,
+    "bytes": 401
+  },
+  {
+    "prueba": "Segunda cuenta de socio",
+    "estado": 201,
+    "ms": 230,
+    "bytes": 100
+  },
+  {
+    "prueba": "Ingreso de segunda cuenta",
+    "estado": 200,
+    "ms": 260,
+    "bytes": 174
+  },
+  {
+    "prueba": "Aislamiento de membresías entre socios",
+    "estado": 200,
+    "ms": 11,
+    "bytes": 36
+  },
+  {
+    "prueba": "Consulta de longitud inválida",
+    "estado": 400,
+    "ms": 9,
+    "bytes": 59
+  },
+  {
+    "prueba": "Registro de consulta",
+    "estado": 201,
+    "ms": 22,
+    "bytes": 51
+  },
+  {
+    "prueba": "Ingreso de administrador",
+    "estado": 200,
+    "ms": 68,
+    "bytes": 162
+  },
+  {
+    "prueba": "Alta de plan con datos que contienen HTML",
+    "estado": 201,
+    "ms": 25,
+    "bytes": 158
+  },
+  {
+    "prueba": "Actualización de plan",
+    "estado": 200,
+    "ms": 16,
+    "bytes": 158
+  },
+  {
+    "prueba": "Baja de plan sin referencias",
+    "estado": 200,
+    "ms": 10,
+    "bytes": 29
+  },
+  {
+    "prueba": "No existe tras la baja",
+    "estado": 404,
+    "ms": 10,
+    "bytes": 44
+  },
+  {
+    "prueba": "Integridad referencial al eliminar plan usado",
+    "estado": 409,
+    "ms": 10,
+    "bytes": 60
+  },
+  {
+    "prueba": "Cierre de sesión",
+    "estado": 200,
+    "ms": 8,
+    "bytes": 30
+  },
+  {
+    "prueba": "Historial bloqueado luego de cerrar sesión",
+    "estado": 401,
+    "ms": 7,
+    "bytes": 36
+  },
+  {
+    "prueba": "Acceso directo bloqueado a config/local.php",
+    "estado": 403
+  },
+  {
+    "prueba": "Acceso directo bloqueado a database/gym_control.sql",
+    "estado": 403
+  },
+  {
+    "prueba": "Acceso directo bloqueado a .git/config",
+    "estado": 403
+  },
+  {
+    "prueba": "Acceso directo bloqueado a api/http.php",
+    "estado": 403
+  },
+  {
+    "prueba": "Error de PDO controlado, JSON sin datos de conexión",
+    "estado": 500
+  }
+]

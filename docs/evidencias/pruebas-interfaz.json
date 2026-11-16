@@ -1,0 +1,42 @@
+[
+  {
+    "prueba": "Enlace de salto y foco visible con Tab y Enter",
+    "resultado": "OK"
+  },
+  {
+    "prueba": "CU01 desde la portada y CU02 en tabla",
+    "resultado": "OK"
+  },
+  {
+    "prueba": "CU02 en tarjetas con búsqueda sin tildes",
+    "resultado": "OK"
+  },
+  {
+    "prueba": "CU03 abre el detalle y conserva el ID elegido",
+    "resultado": "OK"
+  },
+  {
+    "prueba": "Registro por teclado y retorno al plan preseleccionado",
+    "resultado": "OK"
+  },
+  {
+    "prueba": "CU04 asigna membresía, recalcula cupón y navega sin recarga",
+    "resultado": "OK"
+  },
+  {
+    "prueba": "Consulta de AE2 persiste desde el detalle",
+    "resultado": "OK"
+  },
+  {
+    "prueba": "Cierre de sesión con Tab y Enter",
+    "resultado": "OK"
+  },
+  {
+    "prueba": "CRUD de planes y representación literal de un intento de XSS",
+    "resultado": "OK"
+  },
+  {
+    "prueba": "Vistas sin desplazamiento horizontal general a 320 px",
+    "resultado": "OK"
+  }
+]

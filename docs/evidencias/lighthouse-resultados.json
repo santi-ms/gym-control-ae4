@@ -1,0 +1,74 @@
+[
+  {
+    "vista": "inicio",
+    "ruta": "",
+    "puntaje": 100,
+    "lighthouse": "13.6.0",
+    "navegador": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/158.0.0.0 Safari/537.36",
+    "ejecutado": "2026-11-15T22:47:29.602Z"
+  },
+  {
+    "vista": "tabla",
+    "ruta": "#tabla",
+    "puntaje": 100,
+    "lighthouse": "13.6.0",
+    "navegador": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/158.0.0.0 Safari/537.36",
+    "ejecutado": "2026-11-15T22:47:35.854Z"
+  },
+  {
+    "vista": "tarjetas",
+    "ruta": "#planes",
+    "puntaje": 100,
+    "lighthouse": "13.6.0",
+    "navegador": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/158.0.0.0 Safari/537.36",
+    "ejecutado": "2026-11-15T22:47:42.002Z"
+  },
+  {
+    "vista": "detalle",
+    "ruta": "#detalle/1",
+    "puntaje": 100,
+    "lighthouse": "13.6.0",
+    "navegador": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/158.0.0.0 Safari/537.36",
+    "ejecutado": "2026-11-15T22:47:47.996Z"
+  },
+  {
+    "vista": "ingreso",
+    "ruta": "#cuenta",
+    "puntaje": 100,
+    "lighthouse": "13.6.0",
+    "navegador": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/158.0.0.0 Safari/537.36",
+    "ejecutado": "2026-11-15T22:47:54.104Z"
+  },
+  {
+    "vista": "seleccion",
+    "ruta": "#elegir/1",
+    "puntaje": 100,
+    "lighthouse": "13.6.0",
+    "navegador": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/158.0.0.0 Safari/537.36",
+    "ejecutado": "2026-11-15T22:48:01.952Z"
+  },
+  {
+    "vista": "socio",
+    "ruta": "#cuenta",
+    "puntaje": 100,
+    "lighthouse": "13.6.0",
+    "navegador": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/158.0.0.0 Safari/537.36",
+    "ejecutado": "2026-11-15T22:48:08.203Z"
+  },
+  {
+    "vista": "detalle-socio",
+    "ruta": "#detalle/1",
+    "puntaje": 100,
+    "lighthouse": "13.6.0",
+    "navegador": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/158.0.0.0 Safari/537.36",
+    "ejecutado": "2026-11-15T22:48:14.226Z"
+  },
+  {
+    "vista": "administracion",
+    "ruta": "#admin",
+    "puntaje": 100,
+    "lighthouse": "13.6.0",
+    "navegador": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/158.0.0.0 Safari/537.36",
+    "ejecutado": "2026-11-15T22:48:21.350Z"
+  }
+]
