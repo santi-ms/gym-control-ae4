@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Consultá, compará y elegí tu plan en Gym Control.">
+  <title>Inicio | Gym Control</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#inicio">
+        <span class="brand-mark" aria-hidden="true">GC</span>
+        <span>Gym <strong>Control</strong></span>
+      </a>
+      <nav class="main-nav" aria-label="Navegación principal">
+        <a href="#inicio" data-nav="inicio" aria-current="page">Inicio</a>
+        <a href="#tabla" data-nav="tabla">Planes en tabla</a>
+        <a href="#planes" data-nav="planes">Planes en tarjetas</a>
+        <a href="#cuenta" data-nav="cuenta" id="enlace-cuenta">Ingresar</a>
+        <a href="#admin" data-nav="admin" id="enlace-admin" hidden>Administrar planes</a>
+        <a class="nav-cta" href="#elegir" data-nav="elegir">Elegir plan</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido" tabindex="-1">
+    <noscript><p class="container">Habilitá JavaScript para consultar los planes y gestionar tu membresía.</p></noscript>
+    <section data-vista="inicio">
+      <div class="hero">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <h1 tabindex="-1">Entrená con un plan que acompañe tus objetivos.</h1>
+            <p class="hero-text">Gym Control reúne las opciones del gimnasio en un solo lugar para que puedas comparar duración, precio y beneficios.</p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="#tabla">Ver planes</a>
+              <a class="text-link" href="#planes">Explorar tarjetas <span aria-hidden="true">→</span></a>
+            </div>
+          </div>
+          <aside class="hero-panel" aria-label="Resumen de planes disponibles">
+            <div class="hero-panel-top"><span class="status-dot" aria-hidden="true"></span>Planes disponibles</div>
+            <p class="hero-number" id="numero-planes" aria-live="polite">…</p>
+            <p class="hero-panel-title">Una opción para cada ritmo</p>
+            <div class="duration-scale" id="resumen-duracion" aria-live="polite"></div>
+          </aside>
+        </div>
+      </div>
+      <div class="section section-light">
+        <div class="container">
+          <h2>Elegí con información clara</h2>
+          <div class="feature-grid">
+            <article class="feature-card"><h3>Comparación simple</h3><p>Revisá duración, precio y descripción en una misma tabla.</p></article>
+            <article class="feature-card"><h3>Opciones flexibles</h3><p>Explorá los planes según tu disponibilidad y tus objetivos.</p></article>
+            <article class="feature-card"><h3>Selección directa</h3><p>Confirmá el plan que elegiste y consultá su vigencia en tu cuenta.</p></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section data-vista="tabla" hidden>
+      <div class="page-hero">
+        <div class="container page-hero-inner">
+          <div><h1 tabindex="-1">Compará los planes</h1><p>Duración, precio y descripción de cada plan.</p></div>
+          <a class="view-switch" href="#planes">Ver como tarjetas</a>
+        </div>
+      </div>
+      <div class="section container">
+        <p id="estado-tabla" role="status" aria-live="polite"></p>
+        <button class="button button-outline" type="button" data-reintentar hidden>Reintentar carga</button>
+        <div class="table-shell">
+          <div class="table-scroll tabla-responsive">
+            <table>
+              <caption>Planes de Gym Control</caption>
+              <thead><tr><th scope="col">Plan</th><th scope="col">Duración</th><th scope="col">Precio</th><th scope="col">Descripción</th><th scope="col">Acción</th></tr></thead>
+              <tbody id="tabla-planes" aria-live="polite"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section data-vista="planes" hidden>
+      <div class="page-hero">
+        <div class="container page-hero-inner">
+          <div><h1 tabindex="-1">Elegí tu próximo plan</h1><p>Explorá las opciones del gimnasio.</p></div>
+          <a class="view-switch" href="#tabla">Ver como tabla</a>
+        </div>
+      </div>
+      <div class="section container">
+        <form id="filtros" class="catalog-toolbar" aria-label="Filtros del catálogo">
+          <div class="form-group">
+            <label for="buscar-plan">Buscar por nombre, descripción o categoría</label>
+            <input type="search" id="buscar-plan" placeholder="Ej.: progreso" autocomplete="off">
+          </div>
+          <div class="form-group">
+            <label for="filtrar-duracion">Duración en meses</label>
+            <input type="number" id="filtrar-duracion" min="1" max="36" inputmode="numeric" placeholder="Todas">
+          </div>
+          <button class="button button-outline" type="reset">Limpiar filtros</button>
+        </form>
+        <p id="estado-planes" class="catalog-status" role="status" aria-live="polite"></p>
+        <button class="button button-outline" type="button" data-reintentar hidden>Reintentar carga</button>
+        <div id="catalogo-planes" class="plans-grid" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section data-vista="detalle" class="section product-section" hidden>
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Ubicación"><a href="#planes">Planes</a><span aria-hidden="true">/</span><span>Detalle</span></nav>
+        <p id="estado-detalle" role="status" aria-live="polite"></p>
+        <button class="button button-outline" type="button" data-reintentar hidden>Reintentar carga</button>
+        <div class="product-layout">
+          <article class="product-summary">
+            <h1 id="detalle-nombre" tabindex="-1" aria-live="polite">Detalle del plan</h1>
+            <div id="detalle-datos" aria-live="polite" hidden>
+              <dl class="product-data">
+                <div><dt>Duración</dt><dd id="detalle-duracion"></dd></div>
+                <div><dt>Precio</dt><dd id="detalle-precio"></dd></div>
+                <div><dt>Categoría</dt><dd id="detalle-categoria"></dd></div>
+              </dl>
+              <p id="detalle-descripcion" class="product-lead"></p>
+              <a id="elegir-desde-detalle" class="button button-primary" href="#elegir">Seleccionar plan</a>
+            </div>
+          </article>
+          <aside class="benefits-panel">
+            <h2>Incluye</h2>
+            <ul class="benefits-list"><li>Acceso a las instalaciones</li><li>Entrenamiento durante la vigencia del plan</li></ul>
+          </aside>
+        </div>
+        <section class="reclamo-section" id="seccion-consulta" aria-labelledby="titulo-consulta" hidden>
+          <h2 id="titulo-consulta">Reclamos y consultas</h2>
+          <p id="acceso-consulta"><a href="#cuenta" class="text-link">Ingresá con tu cuenta de socio para enviar una consulta.</a></p>
+          <form id="form-consulta" class="selection-form reclamo-form" method="post" hidden>
+            <div class="form-group">
+              <label for="consulta-mensaje">Tu mensaje</label>
+              <textarea id="consulta-mensaje" name="mensaje" required minlength="10" maxlength="500" rows="4" aria-describedby="consulta-longitud"></textarea>
+            </div>
+            <p id="consulta-longitud">De 10 a 500 caracteres.</p>
+            <button class="button button-primary" type="submit">Enviar consulta</button>
+            <p id="estado-consulta" class="feedback" role="status" aria-live="polite"></p>
+          </form>
+        </section>
+      </div>
+    </section>
+
+    <section data-vista="elegir" hidden>
+      <div class="page-hero page-hero-centered">
+        <div class="container"><h1 tabindex="-1">Seleccioná tu plan</h1><p>Confirmá tus datos y el medio de pago acordado con el gimnasio.</p></div>
+      </div>
+      <div class="section form-section">
+        <div class="container form-container">
+          <p id="estado-elegir" role="status" aria-live="polite"></p>
+          <button class="button button-outline" type="button" data-reintentar hidden>Reintentar carga</button>
+          <a id="ingresar-para-elegir" href="#cuenta" class="button button-primary" hidden>Ingresar o crear cuenta</a>
+          <a id="ver-membresia" href="#cuenta" class="button button-primary" hidden>Ver mi membresía</a>
+          <form id="form-membresia" class="selection-form" method="post" hidden>
+            <fieldset>
+              <legend>Datos del cliente</legend>
+              <div class="form-grid">
+                <div class="form-group"><label for="compra-nombre">Nombre y apellido</label><input required maxlength="100" minlength="2" id="compra-nombre" name="nombre" autocomplete="name"></div>
+                <div class="form-group"><label for="compra-email">E-mail</label><input required maxlength="190" id="compra-email" name="email" type="email" autocomplete="email"></div>
+                <div class="form-group"><label for="compra-direccion">Dirección</label><input required maxlength="160" minlength="3" id="compra-direccion" name="direccion" autocomplete="street-address"></div>
+                <div class="form-group"><label for="compra-telefono">Teléfono</label><input required maxlength="35" minlength="6" id="compra-telefono" name="telefono" type="tel" autocomplete="tel"></div>
+              </div>
+            </fieldset>
+            <fieldset>
+              <legend>Medio de pago</legend>
+              <div class="choice-grid choice-grid-three" id="medios-pago">
+                <button class="choice-card" type="button" data-valor="tarjeta" aria-pressed="false">Tarjeta</button>
+                <button class="choice-card" type="button" data-valor="efectivo" aria-pressed="false">Efectivo</button>
+                <button class="choice-card" type="button" data-valor="transferencia" aria-pressed="false">Transferencia</button>
+              </div>
+              <p class="fieldset-help">El pago se gestiona en el gimnasio.</p>
+            </fieldset>
+            <fieldset>
+              <legend>Planes disponibles</legend>
+              <div class="choice-grid choice-grid-plans" id="opciones-planes" aria-live="polite"></div>
+            </fieldset>
+            <fieldset>
+              <legend>Cantidad y subtotal</legend>
+              <div class="quantity-layout">
+                <div class="form-group">
+                  <label for="cantidad">Períodos del plan</label>
+                  <input type="number" id="cantidad" name="cantidad" value="1" min="1" max="20" step="1" inputmode="numeric" required>
+                  <small class="field-hint">De 1 a 20 períodos consecutivos de la misma membresía.</small>
+                </div>
+                <div id="estado-total" class="subtotal-panel" role="status" aria-live="polite">Elegí un plan para ver el total.</div>
+              </div>
+            </fieldset>
+            <fieldset>
+              <legend>Código de descuento</legend>
+              <div class="cupon-layout">
+                <div class="form-group"><label for="codigo-cupon">Código de cupón (opcional)</label><input id="codigo-cupon" name="cupon" maxlength="20" autocomplete="off"></div>
+                <button class="button button-outline" type="button" id="validar-cupon">Validar cupón</button>
+              </div>
+              <p id="estado-cupon" class="feedback" role="status" aria-live="polite"></p>
+            </fieldset>
+            <button class="button button-primary" type="submit">Confirmar membresía</button>
+            <p id="estado-compra" class="feedback" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section data-vista="cuenta" hidden>
+      <div class="page-hero page-hero-centered">
+        <div class="container"><h1 tabindex="-1">Tu cuenta en Gym Control</h1><p>Ingresá para gestionar tu membresía.</p></div>
+      </div>
+      <div class="section form-section">
+        <div class="container">
+          <p id="estado-cuenta" role="status" aria-live="polite"></p>
+          <button class="button button-outline" type="button" data-reintentar hidden>Reintentar carga</button>
+          <div id="vista-visitante" class="access-layout" hidden>
+            <form id="form-ingreso" class="selection-form access-form" method="post">
+              <fieldset>
+                <legend>Ingresar</legend>
+                <div class="access-fields">
+                  <div class="form-group"><label for="ingreso-email">E-mail</label><input type="email" id="ingreso-email" name="email" autocomplete="username" maxlength="190" required></div>
+                  <div class="form-group"><label for="ingreso-clave">Clave</label><input type="password" id="ingreso-clave" name="clave" autocomplete="current-password" required></div>
+                </div>
+              </fieldset>
+              <button class="button button-primary button-full" type="submit">Ingresar</button>
+              <p id="estado-ingreso" class="feedback" role="status" aria-live="polite"></p>
+            </form>
+            <form id="form-registro" class="selection-form access-form" method="post">
+              <fieldset>
+                <legend>Crear cuenta</legend>
+                <div class="access-fields">
+                  <div class="form-group"><label for="registro-nombre">Nombre y apellido</label><input id="registro-nombre" name="nombre" autocomplete="name" minlength="2" maxlength="100" required></div>
+                  <div class="form-group"><label for="registro-email">E-mail</label><input type="email" id="registro-email" name="email" autocomplete="email" maxlength="190" required></div>
+                  <div class="form-group"><label for="registro-clave">Clave</label><input type="password" id="registro-clave" name="clave" autocomplete="new-password" minlength="8" aria-describedby="ayuda-clave" required><small id="ayuda-clave" class="field-hint">Al menos 8 caracteres. Máximo 72 bytes.</small></div>
+                  <div class="form-group"><label for="registro-repetir">Repetir clave</label><input type="password" id="registro-repetir" name="repetir_clave" autocomplete="new-password" minlength="8" required></div>
+                </div>
+              </fieldset>
+              <button class="button button-outline button-full" type="submit">Crear cuenta</button>
+              <p id="estado-registro" class="feedback" role="status" aria-live="polite"></p>
+            </form>
+          </div>
+          <section id="vista-socio" class="member-panel" aria-labelledby="saludo-socio" hidden>
+            <h2 id="saludo-socio" tabindex="-1" aria-live="polite">Mi cuenta</h2>
+            <div id="historial" aria-live="polite"></div>
+            <div class="form-actions">
+              <a class="button button-primary" id="socio-renovar" href="#elegir">Elegir plan</a>
+              <a class="button button-primary" id="cuenta-admin" href="#admin" hidden>Administrar planes</a>
+              <button class="button button-ghost" id="cerrar-sesion" type="button">Cerrar sesión</button>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <section data-vista="admin" hidden>
+      <div class="page-hero"><div class="container"><h1 tabindex="-1">Administración de planes</h1><p>Creá, editá o eliminá planes del catálogo.</p></div></div>
+      <div class="section container">
+        <p id="estado-admin" role="status" aria-live="polite"></p>
+        <button class="button button-outline" type="button" data-reintentar hidden>Reintentar carga</button>
+        <a id="admin-ingresar" href="#cuenta" class="button button-primary" hidden>Ir a mi cuenta</a>
+        <div id="panel-admin" class="admin-layout" hidden>
+          <form id="form-plan" class="selection-form" method="post" aria-labelledby="titulo-editor">
+            <h2 id="titulo-editor" tabindex="-1">Crear plan</h2>
+            <div class="access-fields">
+              <div class="form-group"><label for="admin-nombre">Nombre</label><input id="admin-nombre" name="nombre" minlength="2" maxlength="100" required></div>
+              <div class="form-grid">
+                <div class="form-group"><label for="admin-duracion">Duración en meses</label><input id="admin-duracion" name="duracion_meses" type="number" min="1" max="36" required></div>
+                <div class="form-group"><label for="admin-precio">Precio en pesos</label><input id="admin-precio" name="precio" type="number" min="1" max="10000000" required></div>
+              </div>
+              <div class="form-group"><label for="admin-categoria">Categoría</label><input id="admin-categoria" name="categoria" minlength="2" maxlength="60" required></div>
+              <div class="form-group"><label for="admin-descripcion">Descripción</label><textarea id="admin-descripcion" name="descripcion" rows="4" minlength="5" maxlength="600" required></textarea></div>
+            </div>
+            <div class="form-actions">
+              <button class="button button-primary" type="submit" id="guardar-plan">Crear plan</button>
+              <button class="button button-ghost" type="button" id="cancelar-edicion" hidden>Cancelar edición</button>
+            </div>
+            <p id="estado-editor" class="feedback" role="status" aria-live="polite"></p>
+          </form>
+          <div>
+            <h2>Planes publicados</h2>
+            <div id="confirmacion-baja" class="selection-form confirmacion" aria-live="polite" hidden>
+              <p id="pregunta-baja"></p>
+              <div class="form-actions">
+                <button class="button button-primary" type="button" id="confirmar-baja">Confirmar eliminación</button>
+                <button class="button button-ghost" type="button" id="cancelar-baja">Cancelar</button>
+              </div>
+            </div>
+            <p id="estado-lista-admin" class="feedback" role="status" aria-live="polite"></p>
+            <div id="lista-admin" class="lista-admin" aria-live="polite"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p><strong>Gym Control</strong> · Actividad Evaluativa 4</p>
+      <p>Paradigmas y Lenguajes de Programación III · UCP</p>
+    </div>
+  </footer>
+</body>
+</html>
