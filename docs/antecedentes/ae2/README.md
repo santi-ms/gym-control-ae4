@@ -4,7 +4,6 @@ Estos documentos registran la versión académica del 29/09/2026, anterior a la 
 
 - [Informe grupal PDF](<Martins - Olexyn - Tarnoski_Actividad Evaluativa 2.pdf>).
 - [Editable del mismo informe](<Martins - Olexyn - Tarnoski_Actividad Evaluativa 2.docx>).
-- [Informes individuales](../../informes-individuales/README.md).
 
 El PDF y el Word son dos formatos del mismo informe. Se conserva su contenido histórico; sus resultados no se presentan como pruebas de la AE4.
 

@@ -11,10 +11,9 @@ La documentación vigente corresponde a la SPA con JavaScript, API PHP y persist
 - [Pruebas del contador de Santino](pruebas-santino-consultas.md).
 - [Instalación y contratos de la API](../README.md).
 
-## Antecedentes e informes individuales
+## Antecedentes grupales
 
 - [AE1: análisis y diseño](antecedentes/ae1/Gym_Control_AE1_Analisis_y_Diseno.pdf).
 - [AE2: informe grupal, diagramas y evidencias](antecedentes/ae2/README.md).
-- [Informes individuales conservados](informes-individuales/README.md).
 
 Las referencias históricas a `producto.html`, `comprar.html`, `acceso.html`, `data/*.json`, `sessionStorage` y `npm test` pertenecen a la AE2. No son instrucciones para ejecutar la AE4, que utiliza `public/index.html`, rutas con fragmentos y la API PHP. Las pruebas y capturas antiguas no se presentan como nuevas verificaciones.

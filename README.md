@@ -23,7 +23,7 @@ gym-control-ae4/
 ├── config/                  Conexión PDO y configuración local
 ├── database/                Esquema SQL y catálogo inicial
 ├── scripts/                 Alta de cuentas y pruebas automatizadas del contador
-└── docs/                    Informe AE4, evidencias, antecedentes e informes individuales
+└── docs/                    Informe grupal AE4, evidencias y antecedentes
 ```
 
 Flujo MVC desacoplado: **vista HTML/CSS + JavaScript → fetch HTTP/JSON → controladores PHP → modelos PDO → MySQL**. La vista permanece en un documento HTML y cambia de sección mediante rutas con fragmentos. El navegador comparte origen con la API.

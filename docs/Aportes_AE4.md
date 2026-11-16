@@ -29,8 +29,8 @@ Los enlaces identifican los aportes originales de Santiago. En esta copia se reg
 
 [Commit del contador de Santino](https://github.com/santi-ms/gym-control-ae4/commit/9ca9adb30912d33987c4ced227766b7ec741635a).
 
-## Procedencia y documentación individual
+## Procedencia y pruebas de los aportes
 
 El repositorio de entrega es [santi-ms/gym-control-ae4](https://github.com/santi-ms/gym-control-ae4). Parte del trabajo grupal original y registra su importación por componentes y los aportes posteriores. Los demás commits de preparación de esta copia se atribuyen a `santi-ms`; esa atribución identifica la importación y conserva los créditos del equipo.
 
-Los [informes individuales](informes-individuales/README.md) se conservan como antecedentes de sus respectivas actividades. Los registros de pruebas de Franco y Santino describen por separado el alcance y los límites de sus verificaciones.
+Los registros de pruebas de Franco y Santino describen por separado el alcance y los límites de sus verificaciones y respaldan los aportes al proyecto grupal.
