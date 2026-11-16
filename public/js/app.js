@@ -18,6 +18,7 @@ let eliminarId = null;
 let regresarDespuesDeIngresar = '';
 let revisionVista = 0;
 let cuentaCompra = null;
+const borradoresConsulta = new Map();
 
 class ErrorApi extends Error {
   constructor(estado, mensaje) {
@@ -167,6 +168,8 @@ function pintarTabla() {
 
 function actualizarDetalle(plan) {
   detalleId = plan.id;
+  $('consulta-mensaje').value = borradoresConsulta.get(plan.id) ?? '';
+  actualizarContadorConsulta();
   $('detalle-nombre').textContent = plan.nombre;
   $('detalle-duracion').textContent = duracion(plan.duracion_meses);
   $('detalle-precio').textContent = moneda.format(plan.precio);
@@ -345,7 +348,6 @@ async function navegar(moverFoco = true) {
     if (nombre === 'detalle') {
       $('detalle-datos').hidden = true;
       $('seccion-consulta').hidden = true;
-      $('form-consulta').reset();
       aviso('estado-consulta', '');
       const [detalle] = await Promise.all([api('planes.php?id=' + (id ?? '')), cargarSesion()]);
       if (revision !== revisionVista) return;
@@ -498,9 +500,36 @@ alEnviar('form-membresia', 'estado-compra', async (form) => {
   solicitud = null;
 });
 
+function actualizarContadorConsulta() {
+  const campo = $('consulta-mensaje');
+  const longitud = Array.from(campo.value.trim()).length;
+  const faltan = Math.max(0, 10 - longitud);
+  const excedidos = longitud > 500;
+  const ayuda = excedidos ? 'El máximo es de 500 caracteres.'
+    : faltan ? 'Faltan ' + faltan + ' para el mínimo.' : 'Mínimo cumplido.';
+  $('consulta-contador').textContent = longitud + ' / 500 caracteres. ' + ayuda;
+  campo.setCustomValidity(excedidos ? 'El mensaje debe tener como máximo 500 caracteres.'
+    : faltan ? 'El mensaje debe tener al menos 10 caracteres, sin contar los espacios al principio y al final.' : '');
+}
+
+$('consulta-mensaje').addEventListener('input', () => {
+  borradoresConsulta.set(detalleId, $('consulta-mensaje').value);
+  actualizarContadorConsulta();
+});
+actualizarContadorConsulta();
+
 alEnviar('form-consulta', 'estado-consulta', async (form) => {
-  const datos = await api('consultas.php', 'POST', { plan_id: detalleId, ...datosFormulario(form) }, { requiereSesion: true });
-  form.reset();
+  actualizarContadorConsulta();
+  if (!form.reportValidity()) return;
+  const planId = detalleId;
+  const mensaje = $('consulta-mensaje').value;
+  const datos = await api('consultas.php', 'POST', { plan_id: planId, mensaje }, { requiereSesion: true });
+  if (borradoresConsulta.get(planId) === mensaje) borradoresConsulta.delete(planId);
+  if (detalleId !== planId) return;
+  if ($('consulta-mensaje').value === mensaje) {
+    form.reset();
+    actualizarContadorConsulta();
+  }
   aviso('estado-consulta', datos.mensaje + ' Número: ' + datos.id + '.', 'exito');
 });
 

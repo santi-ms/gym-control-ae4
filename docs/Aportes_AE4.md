@@ -19,15 +19,15 @@ Los enlaces apuntan a los aportes de Santiago en las actividades anteriores que 
 
 Mensaje del cambio `Recuperar el acceso al vencer la sesión`.
 
-## Santino Martins · tarea pendiente
+## Santino Martins · contador implementado
 
-**Recuperar el contador de caracteres en Reclamos y consultas.**
+**Contador de caracteres en Reclamos y consultas.**
 
-1. Revisá `#form-consulta` en [`public/index.html`](../public/index.html), su manejador en [`public/js/app.js`](../public/js/app.js) y la validación de [`api/consultas.php`](../api/consultas.php).
-2. Agregá un contador visible al escribir, con un límite de 500 caracteres, e indicá cuánto falta completar cuando el mensaje todavía tiene menos de 10 caracteres útiles. Vinculá la ayuda con el campo y actualizá los avisos de envío en la región `aria-live` existente. El servidor sigue validando la longitud antes de guardar.
-3. Probá los límites de 9, 10 y 500 caracteres, un mensaje con espacios al principio y al final, y un error de red. Comprobá que el texto quede disponible para reintentar si el envío falla y que el contador vuelva a cero después de un envío correcto. Anotá los pasos y el resultado real en `docs/pruebas-santino-consultas.md`.
+1. El formulario muestra un contador actualizado al escribir, el mínimo de 10 y el máximo de 500 caracteres, con ayuda vinculada al campo y anuncios mediante `aria-live`.
+2. Los mensajes con menos de 10 caracteres útiles no se envían. Ante un error, se conserva el texto por plan durante la navegación. Al confirmarse el envío, se reinician el campo y el contador sin borrar una nueva edición pendiente.
+3. Los casos verificados y los límites del entorno están en [`pruebas-santino-consultas.md`](pruebas-santino-consultas.md). El servidor mantiene su validación de longitud antes de guardar.
 
-Rama sugerida `aporte/santino-consultas`. Mensaje sugerido `Agregar contador accesible al formulario de consultas`.
+Mensaje del cambio `Agregar contador accesible al formulario de consultas`.
 
 ## Cómo registrar cada cambio
 
