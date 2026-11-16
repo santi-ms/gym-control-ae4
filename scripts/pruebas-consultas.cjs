@@ -57,6 +57,13 @@ async function test(name, fn) { await fn(); results.push(name); }
     type('  123456789  '); assert.match(counter(), /^9 /); assert.ok(input.error);
     type('  1234567890  '); assert.match(counter(), /^10 /); assert.equal(input.error, '');
   });
+  await test('500 emojis cuentan como 500 caracteres y 501 se rechazan', () => {
+    type('😀'.repeat(500)); assert.equal(input.error, ''); assert.match(counter(), /^500 /);
+    type('😀'.repeat(501)); assert.match(input.error, /máximo/);
+  });
+  await test('500 caracteres con espacios exteriores mantienen el mismo limite', () => {
+    type('  ' + 'a'.repeat(500) + '  '); assert.equal(input.error, ''); assert.match(counter(), /^500 /);
+  });
   await test('Error de red: conserva texto contador y borrador al volver al plan', async () => {
     const text = 'Consulta pendiente de envio'; type(text);
     response = () => { throw new Error('offline'); };
