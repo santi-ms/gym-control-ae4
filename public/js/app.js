@@ -8,7 +8,7 @@ const duracion = (meses) => meses === 1 ? '1 mes' : meses + ' meses';
 
 let sesion = null;
 let peticionPlanes;
-let planes = [];
+let planes = null;
 let detalleId = null;
 let planElegido = null;
 let medioElegido = null;
@@ -126,6 +126,8 @@ function normalizar(texto) {
 }
 
 function pintarTarjetas() {
+  if (planes === null) return;
+
   const busqueda = normalizar($('buscar-plan').value);
   const meses = $('filtrar-duracion').value;
   const filtrados = planes.filter((plan) =>
@@ -149,7 +151,13 @@ function pintarTarjetas() {
     return tarjeta;
   });
   $('catalogo-planes').replaceChildren(...tarjetas);
-  aviso('estado-planes', filtrados.length ? filtrados.length + ' planes encontrados.' : 'No encontramos planes con esos filtros.');
+
+  const cantidad = filtrados.length;
+  let mensaje = cantidad + ' planes encontrados.';
+  if (planes.length === 0) mensaje = 'Todavía no hay planes disponibles.';
+  else if (cantidad === 0) mensaje = 'No encontramos planes con esos filtros. Probá limpiar los filtros.';
+  else if (cantidad === 1) mensaje = '1 plan encontrado.';
+  aviso('estado-planes', mensaje);
 }
 
 function pintarTabla() {
